@@ -48,27 +48,24 @@ class RusakController extends Controller
 
     }
 
-
-    public function edit(Rusak $rusak)
-    {
-        $masterbuku = Masterbuku::all();
-
-        return view('rusak.edit', [
-            'item' => $rusak,
-            'masterbuku' => $masterbuku,
-        ]);
-    }
+    public function edit($id)
+{
+    $item = Rusak::findOrFail($id);
+    $masterbuku = Masterbuku::all(); // Ambil semua kategori atau sesuai kebutuhan
+    return view('rusak.edit', compact('item', 'masterbuku'));
+}
 
 
-    public function update(Request $request, Rusak $id)
-    {
-        $data = $request->all();
+    public function update(Request $request, $id)
+{
+    $rusak = Rusak::findOrFail($id);
 
-        $id->update($data);
+    $data = $request->all();
 
-        return redirect()->route('rusak.index')->with('success', 'Data Telah diupdate');
+    $rusak->update($data);
 
-    }
+    return redirect()->route('rusak.index')->with('success', 'Data Telah diupdate');
+}
 
 
     public function destroy(Rusak $rusak)

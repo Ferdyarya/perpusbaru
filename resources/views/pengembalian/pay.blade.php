@@ -43,10 +43,10 @@
                                             <div class="col-md-4"><b>Nama Lengkap:</b></div>
                                             <div class="col-md-8">{{ Auth::user()->name }}</div>
                                         </div>
-                                        <div class="row mb-2">
+                                        {{-- <div class="row mb-2">
                                             <div class="col-md-4"><b>Email:</b></div>
                                             <div class="col-md-8">{{ $item->masteranggota->email }}</div>
-                                        </div>
+                                        </div> --}}
                                         <div class="row mb-2">
                                             <div class="col-md-4"><b>Judul buku:</b></div>
                                             <div class="col-md-8">{{ $item->masterbuku->judul }}</div>

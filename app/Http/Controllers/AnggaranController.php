@@ -55,26 +55,24 @@ class AnggaranController extends Controller
     }
 
 
-    public function edit(Anggaran $anggaran)
-    {
-        $masterkategori = Masterkategori::all();
-
-        return view('anggaran.edit', [
-            'item' => $anggaran,
-            'master$masterkategori' => $masterkategori,
-        ]);
-    }
+    public function edit($id)
+{
+    $item = Anggaran::findOrFail($id);
+    $masterkategori = Masterkategori::all(); // Ambil semua kategori atau sesuai kebutuhan
+    return view('anggaran.edit', compact('item', 'masterkategori'));
+}
 
 
-    public function update(Request $request, Anggaran $id)
-    {
-        $data = $request->all();
+    public function update(Request $request, $id)
+{
+    $anggaran = Anggaran::findOrFail($id);
 
-        $id->update($data);
+    $data = $request->all();
 
-        return redirect()->route('anggaran.index')->with('success', 'Data Telah diupdate');
+    $anggaran->update($data);
 
-    }
+    return redirect()->route('anggaran.index')->with('success', 'Data Telah diupdate');
+}
 
 
     public function destroy(Anggaran $anggaran)

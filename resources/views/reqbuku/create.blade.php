@@ -45,17 +45,13 @@
                                         </select>
                                     </div>
                                     <div class="form-group" style="border-radius: 8px;">
-                                        <label for="id_anggota">Anggota</label>
-                                        <select class="form-select" name="id_anggota" id="judulbuku" style="border-radius: 8px;" data-placeholder="PILIH NAMA ANGGOTA">
-                                            <option></option>
-                                            @foreach ($masteranggota as $item)
-                                            <option value="{{ $item->id }}">{{ $item->user->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label for="id_anggota">Nama Anggota</label>
+                                        <input type="text" class="form-control" id="id_anggota" value="{{ Auth::user()->name }}" readonly>
+                                        <input type="hidden" value="{{ Auth::user()->id }}" name="id_anggota">
                                     </div>
                                       <div class="form-group">
                                           <label for="judulbuku">Judul Buku</label>
-                                          <input type="text" name="judulbuku" class="form-control @error('judulbuku') is-invalid @enderror" id="judulbuku"
+                                          <input type="text" name="judulbuku" class="form-control @error('judulbuku') is-invalid @enderror"
                                               aria-describedby="emailHelp" placeholder="Masukan Judul Buku" value="{{ old('judulbuku') }}" required>
                                           @error('judulbuku')
                                               <div class="invalid-feedback">{{ $message }}</div>
@@ -88,14 +84,13 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                      <div class="form-group">
-                                          <label for="tanggal">Tanggal</label>
-                                          <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal"
-                                              aria-describedby="emailHelp" placeholder="Masukan tanggal" value="{{ old('tanggal') }}" required>
-                                          @error('tanggal')
-                                              <div class="invalid-feedback">{{ $message }}</div>
-                                          @enderror
-                                      </div>
+                                    <div class="form-group" style="border-radius: 8px;">
+                                        <label for="tanggal">Tanggal Peminjaman</label>
+                                        <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" style="border-radius: 8px;" placeholder="Masukkan tanggal" value="{{ old('tanggal') }}" min="{{ \Carbon\Carbon::now()->toDateString() }}" max="2100-12-31" required>
+                                        @error('tanggal')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
                                       <button type="submit" class="btn btn-primary">Submit</button>
                                   </form>

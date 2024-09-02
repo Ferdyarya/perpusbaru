@@ -34,42 +34,47 @@
                       <div class="col-8">
                           <div class="card" style="border-radius: 10px;">
                               <div class="card-body">
-                                  <form method="POST" action="{{ route('rusak.update', $item->id) }}" enctype="multipart/form-data">
-                                      @csrf
-                                      @method('PUT')
-                                      <div class="form-group" style="border-radius: 8px;">
+                                <form method="POST" action="{{ route('rusak.update', $item->id) }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="form-group" style="border-radius: 8px;">
                                         <label for="id_buku">Buku</label>
-                                        <select class="form-select" name="id_buku" id="judulbuku" style="border-radius: 8px;" data-placeholder="PILIH JUDUL BUKU">
-                                            <option></option>
-                                            @foreach ($masterbuku as $item)
-                                            <option value="{{ $item->id }}">{{ $item->judul }}</option>
+                                        <select class="form-select" name="id_buku" id="id_buku" style="border-radius: 8px;" data-placeholder="PILIH JUDUL BUKU" required>
+                                            <option value="" disabled>Pilih Buku</option>
+                                            @foreach ($masterbuku as $buku)
+                                                <option value="{{ $buku->id }}" {{ old('id_buku', $item->id_buku) == $buku->id ? 'selected' : '' }}>
+                                                    {{ $buku->judul }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="kerusakan">Keterangan</label>
                                         <select name="kerusakan" class="form-control @error('kerusakan') is-invalid @enderror" id="kerusakan" required>
                                             <option value="" disabled selected>Pilih Keterangan</option>
-                                            <option value="Hilang" {{ old('kerusakan') == 'Hilang' ? 'selected' : '' }}>Hilang</option>
-                                            <option value="Rusak" {{ old('kerusakan') == 'Rusak' ? 'selected' : '' }}>Rusak</option>
+                                            <option value="Hilang" {{ old('kerusakan', $item->kerusakan) == 'Hilang' ? 'selected' : '' }}>Hilang</option>
+                                            <option value="Rusak" {{ old('kerusakan', $item->kerusakan) == 'Rusak' ? 'selected' : '' }}>Rusak</option>
                                         </select>
                                         @error('kerusakan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                      <div class="form-group">
+                                    <div class="form-group">
                                         <label for="qty">Qty</label>
-                                        <input value="{{ $item->qty }}" type="text" name="qty" class="form-control"
-                                             placeholder="Masukan Qty" required>
-                                     </div>
-                                      <div class="form-group">
+                                        <input value="{{ old('qty', $item->qty) }}" type="number" name="qty" class="form-control" id="qty" placeholder="Masukan Qty" required>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="tanggal">Tanggal</label>
-                                        <input value="{{ $item->tanggal }}" type="date" name="tanggal" class="form-control"
-                                             placeholder="Masukan Tanggal" required>
-                                     </div>
-                                      <button type="submit" class="btn btn-primary">Submit</button>
-                                  </form>
+                                        <input value="{{ old('tanggal', $item->tanggal) }}" type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Masukan Tanggal" required>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+
                               </div>
                           </div>
                       </div>

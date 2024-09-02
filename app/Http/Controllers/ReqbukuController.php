@@ -59,28 +59,27 @@ class ReqbukuController extends Controller
     }
 
 
-    public function edit(Reqbuku $reqbuku)
-    {
-        $masterkategori = Masterkategori::all();
-        $masteranggota = Masteranggota::all();
-
-        return view('reqbuku.edit', [
-            'item' => $reqbuku,
-            'masterkategori' => $masterkategori,
-            'masteranggota' => $masteranggota,
-        ]);
-    }
+    public function edit($id)
+{
+    $item = Reqbuku::findOrFail($id);
+    $masterkategori = Masterkategori::all();
+    $masteranggota = Masteranggota::all();
+    return view('reqbuku.edit', compact('item', 'masterkategori','masteranggota'));
+}
 
 
-    public function update(Request $request, Reqbuku $id)
-    {
-        $data = $request->all();
 
-        $id->update($data);
 
-        return redirect()->route('reqbuku.index')->with('success', 'Data Telah diupdate');
+    public function update(Request $request, $id)
+{
+    $reqbuku = Reqbuku::findOrFail($id);
 
-    }
+    $data = $request->all();
+
+    $reqbuku->update($data);
+
+    return redirect()->route('reqbuku.index')->with('success', 'Data Telah diupdate');
+}
 
 
     public function destroy(Reqbuku $reqbuku)

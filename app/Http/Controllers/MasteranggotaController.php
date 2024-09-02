@@ -73,17 +73,16 @@ class MasteranggotaController extends Controller
     }
 
 
-    public function update(Request $request, Masteranggota $masteranggota)
-    {
-        $data = $request->all();
+    public function update(Request $request, $id)
+{
+    $masteranggota = Masteranggota::findOrFail($id);
 
-        $masteranggota->update($data);
+    $data = $request->all();
 
-        //dd($data);
+    $masteranggota->update($data);
 
-        return redirect()->route('masteranggota.index')->with('success', 'Data Telah diupdate');
-
-    }
+    return redirect()->route('masteranggota.index')->with('success', 'Data Telah diupdate');
+}
 
 
     public function destroy($id)

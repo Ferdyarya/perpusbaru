@@ -82,8 +82,8 @@
                                       {{ $item->judulbuku }},{{ $item->tahun }}
                                       <p class="text-body mt-2"></b>Author: {{ $item->author }}</p>
                                   </td>
+                                    <td class="px-6 py-2">{{ $item->masterkategori->nama }}</td>
                                     <td class="px-6 py-2">{{ $item->user->name }}</td>
-                                    <td class="px-6 py-2">{{ Auth::user()->name }}</td>
                                     <td class="px-6 py-2">{{ $item->keterangan }}</td>
                                   <td>
                                       <a href="{{ route('reqbuku.edit', $item->id)}}" class="btn btn-primary">

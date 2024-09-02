@@ -34,51 +34,54 @@
                       <div class="col-8">
                           <div class="card" style="border-radius: 10px;">
                               <div class="card-body">
-                                  <form method="POST" action="{{ route('anggaran.update', $item->id) }}" enctype="multipart/form-data">
-                                      @csrf
-                                      @method('PUT')
-                                      <div class="form-group">
+                                <form method="POST" action="{{ route('anggaran.update', $item->id) }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="form-group">
                                         <label for="tanggal">Tanggal</label>
-                                        <input value="{{ $item->tanggal }}" type="date" name="tanggal" class="form-control"
-                                             placeholder="Masukan Tanggal" required>
-                                     </div>
-                                      <div class="form-group" style="border-radius: 8px;">
+                                        <input type="date" name="tanggal" class="form-control" id="tanggal" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukan Tanggal" required>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="id_kategori">Kategori</label>
-                                        <select class="form-select" name="id_kategori" id="kategori" style="border-radius: 8px;" data-placeholder="PILIH KATEGORI">
-                                            <option></option>
-                                            @foreach ($masterkategori as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        <select class="form-select" name="id_kategori" id="id_kategori" style="border-radius: 8px;" required>
+                                            <option value="" disabled>PILIH KATEGORI</option>
+                                            @foreach ($masterkategori as $kategori)
+                                                <option value="{{ $kategori->id }}" {{ $kategori->id == old('id_kategori', $item->id_kategori) ? 'selected' : '' }}>
+                                                    {{ $kategori->nama }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="namanbuku">Judul Buku</label>
-                                        <input value="{{ $item->namanbuku }}" type="text" name="namanbuku" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Masukan Judul Buku" required>
-                                     </div>
+                                        <input type="text" name="namanbuku" class="form-control" id="namanbuku" value="{{ old('namanbuku', $item->namanbuku) }}" placeholder="Masukan Judul Buku" required>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="keterangan">Keterangan</label>
-                                        <input value="{{ $item->keterangan }}" type="text" name="keterangan" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Masukan Judul Buku" required>
-                                     </div>
-                                      <div class="form-group">
-                                        <label for="tahun">Tahun</label>
-                                        <input value="{{ $item->tahun }}" type="number" name="tahun" class="form-control"
-                                             placeholder="Masukan Tahun" required>
-                                     </div>
-                                      <div class="form-group">
-                                        <label for="harga">Harga</label>
-                                        <input value="{{ $item->harga }}" type="number" name="harga" class="form-control"
-                                             placeholder="Masukan Harga" required>
-                                     </div>
-                                      <div class="form-group">
-                                        <label for="qty">Qty</label>
-                                        <input value="{{ $item->qty }}" type="number" name="qty" class="form-control"
-                                             placeholder="Masukan Qty" required>
-                                     </div>
+                                        <input type="text" name="keterangan" class="form-control" id="keterangan" value="{{ old('keterangan', $item->keterangan) }}" placeholder="Masukan Keterangan" required>
+                                    </div>
 
-                                      <button type="submit" class="btn btn-primary">Submit</button>
-                                  </form>
+                                    <div class="form-group">
+                                        <label for="tahun">Tahun</label>
+                                        <input type="number" name="tahun" class="form-control" id="tahun" value="{{ old('tahun', $item->tahun) }}" placeholder="Masukan Tahun" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="harga">Harga</label>
+                                        <input type="number" name="harga" class="form-control" id="harga" value="{{ old('harga', $item->harga) }}" placeholder="Masukan Harga" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="qty">Qty</label>
+                                        <input type="number" name="qty" class="form-control" id="qty" value="{{ old('qty', $item->qty) }}" placeholder="Masukan Qty" required>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                               </div>
                           </div>
                       </div>

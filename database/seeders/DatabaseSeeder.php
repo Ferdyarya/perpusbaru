@@ -49,7 +49,31 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('4'),
             'roles' => 'siswa'
         ]);
-        
+        User::create([
+            'name' => 'Rika',
+            'email' => 'rika@gmail.com',
+            'password' => bcrypt('5'),
+            'roles' => 'siswa'
+        ]);
+        User::create([
+            'name' => 'Riza',
+            'email' => 'Riza@gmail.com',
+            'password' => bcrypt('6'),
+            'roles' => 'siswa'
+        ]);
+        User::create([
+            'name' => 'Roy',
+            'email' => 'roy@gmail.com',
+            'password' => bcrypt('7'),
+            'roles' => 'siswa'
+        ]);
+        User::create([
+            'name' => 'Rahmad',
+            'email' => 'rahmad@gmail.com',
+            'password' => bcrypt('8'),
+            'roles' => 'siswa'
+        ]);
+
 
         // MasterData
         // Masterkategori::create([

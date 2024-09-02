@@ -64,6 +64,7 @@ Route::prefix('dashboard')->middleware(['auth:sanctum'])->group(function() {
     Route::resource('masterbuku', MasterbukuController::class);
     Route::resource('masteranggota', MasteranggotaController::class);
     Route::resource('masterebook', MasterebookController::class);
+    Route::resource('dosen', DosenController::class);
 
     // Data Tables
     Route::resource('rusak', RusakController::class);

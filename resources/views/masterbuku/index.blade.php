@@ -52,10 +52,6 @@
                                 <th class="px-6 py-2">No</th>
                                 <th class="px-6 py-2">Cover</th>
                                 <th class="px-6 py-2">Judul</th>
-                                {{-- <th class="px-6 py-2">Pengarang</th>
-                                <th class="px-6 py-2">Penerbit</th> --}}
-                                {{-- <th class="px-6 py-2">Tahun Terbit</th> --}}
-                                {{-- <th class="px-6 py-2">ISBN</th> --}}
                                 <th class="px-6 py-2">Rak</th>
                                 <th class="px-6 py-2">Kategori</th>
                                 <th class="px-6 py-2">Jumlah</th>
@@ -76,12 +72,16 @@
                                     {{ $item->judul }},{{ $item->tahun }}
                                     <p class="text-body mt-2">Author: {{ $item->author }}</p>
                                 </td>
-                                {{-- <td class="px-6 py-2">{{ $item->author }}</td>
-                                <td class="px-6 py-2">{{ $item->publisher }}</td>
-                                <td class="px-6 py-2">{{ $item->isbn }}</td>
-                                <td class="px-6 py-2">{{ $item->tahun }}</td> --}}
-                                <td class="px-6 py-2">{{ $item->masterrak->rak }}</td>
-                                <td class="px-6 py-2">{{ $item->masterkategori->nama }}</td>
+                                <td class="px-6 py-2">
+                                    @if($item->masterrak)
+                                        {{ $item->masterrak->rak }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td class="px-6 py-2">
+                                    {{ $item->masterkategori ? $item->masterkategori->nama : 'N/A' }}
+                                </td>
                                 <td class="px-6 py-2">{{ $item->stockbuku }}</td>
                                 <td>
                                     <a href="{{ route('masterbuku.edit', $item->id)}}" class="btn btn-primary">
@@ -94,7 +94,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
                     {{ $masterbuku->links() }}

@@ -47,6 +47,7 @@
                       </div>
 
                       {{-- Button Export PDF --}}
+                      @if (Auth::user()->hakakses('siswa'))
                       <div class="col-auto">
                           <a href="{{ route('masteranggota.create')}}" class="btn btn-success">
                               Tambah Data
@@ -55,6 +56,7 @@
                               Export PDF
                           </a> --}}
                       </div>
+                      @endif
                   </div>
 
                   <div>
@@ -71,7 +73,9 @@
                                 @if (Auth::user()->hakakses('kepalaperpus') || Auth::user()->hakakses('petugas'))
                                 <th class="px-6 py-2">Status</th>
                                 @endif
+                                @if (Auth::user()->hakakses('siswa'))
                                 <th class="px-6 py-2">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -100,6 +104,7 @@
                                     @endif
                                 </td>
                                 @endif
+                                @if (Auth::user()->hakakses('siswa'))
                                 <td class="px-6 py-2">
                                     <a href="{{ route('masteranggota.edit', $item->id) }}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('masteranggota.destroy', $item->id) }}" method="POST" style="display:inline;">
@@ -108,6 +113,7 @@
                                         <button type="submit" class="btn btn-danger">Hapus</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

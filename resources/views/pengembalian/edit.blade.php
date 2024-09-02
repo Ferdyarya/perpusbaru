@@ -38,14 +38,14 @@
                         </a>
                       </div>
                       {{-- Batalkan Pengembalian --}}
-                      <div class="d-flex gap-2 justify-content-end">
+                      {{-- <div class="d-flex gap-2 justify-content-end">
                         <form action="#" method="post" onsubmit="return confirm('Are you sure?');">
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger mb-2">
                             <i class="bi bi-trash"></i> Batalkan pengembalian
                           </button>
                         </form>
-                      </div>
+                      </div> --}}
                     </div>
 
                     <h5 class="card-title fw-semibold mb-4">Detail Pengembalian</h5>
@@ -59,23 +59,23 @@
                               <tr>
                                 <td><h5><b>Nama Lengkap</b></h5></td>
                                 <td class="text-center"><h5><b>:</b></h5></td>
-                                <td><h5><b>{{ Auth::user()->name }}</b></h5></td>
+                                <td><h5><b>{{ $item->user->name }}</b></h5></td>
                               </tr>
-                              <tr>
+                              {{-- <tr>
                                 <td><h5>Email</h5></td>
                                 <td class="text-center"><h5>:</h5></td>
                                 <td><h5>{{ $item->masteranggota->email }}</h5></td>
-                              </tr>
+                              </tr> --}}
                               {{-- <tr>
                                 <td><h5>Nomor telepon</h5></td>
                                 <td class="text-center"><h5>:</h5></td>
                                 <td><h5>{{ $item->masteranggota->no_telp }}</h5></td>
                               </tr> --}}
-                              <tr>
+                              {{-- <tr>
                                 <td><h5>Alamat</h5></td>
                                 <td class="text-center"><h5>:</h5></td>
                                 <td><h5>{{ $item->masteranggota->alamat }}</h5></td>
-                              </tr>
+                              </tr> --}}
                             </tbody>
                           </table>
                         </div>

@@ -52,7 +52,9 @@
                                 <thead>
                                     <tr>
                                         <th class="px-6 py-2">No</th>
-                                        {{-- <th class="px-6 py-2">Nama Peminjam</th> --}}
+                                        @if (Auth::user()->hakakses('kepalaperpus') || Auth::user()->hakakses('petugas'))
+                                        <th class="px-6 py-2">Nama Peminjam</th>
+                                        @endif
                                         <th class="px-6 py-2">Judul Buku</th>
                                         <th class="px-6 py-2">Jumlah</th>
                                         @if (Auth::user()->hakakses('kepalaperpus') || Auth::user()->hakakses('petugas'))
