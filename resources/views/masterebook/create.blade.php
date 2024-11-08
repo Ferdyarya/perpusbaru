@@ -54,6 +54,14 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="sipnosis">Sipnosis</label>
+                                        <input type="text" name="sipnosis" class="form-control @error('sipnosis') is-invalid @enderror" id="sipnosis" placeholder="Masukkan Pengarang" value="{{ old('sipnosis') }}" required>
+                                        @error('sipnosis')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="publisher">Penerbit</label>
                                         <input type="text" name="publisher" class="form-control @error('publisher') is-invalid @enderror" id="publisher" placeholder="Masukkan Penerbit" value="{{ old('publisher') }}" required>
                                         @error('publisher')

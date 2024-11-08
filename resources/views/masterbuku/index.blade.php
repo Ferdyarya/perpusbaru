@@ -52,6 +52,7 @@
                                 <th class="px-6 py-2">No</th>
                                 <th class="px-6 py-2">Cover</th>
                                 <th class="px-6 py-2">Judul</th>
+                                <th class="px-6 py-2">Sipnosis</th>
                                 <th class="px-6 py-2">Rak</th>
                                 <th class="px-6 py-2">Kategori</th>
                                 <th class="px-6 py-2">Jumlah</th>
@@ -71,6 +72,9 @@
                                 <td class="px-6 py-2">
                                     {{ $item->judul }},{{ $item->tahun }}
                                     <p class="text-body mt-2">Author: {{ $item->author }}</p>
+                                </td>
+                                <td class="px-6 py-2">
+                                    {{ $item->sipnosis}}
                                 </td>
                                 <td class="px-6 py-2">
                                     @if($item->masterrak)

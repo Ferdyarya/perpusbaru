@@ -49,18 +49,31 @@ class PeminjamanController extends Controller
 
 
     public function store(Request $request)
-    {
-        $data = $request->all();
-        $tanggal_pinjam = Carbon::parse($data['tanggalpinjam']);
+{
+    $data = $request->all();
+
+    // Loop through each item to process dates and save them
+    for ($i = 0; $i < count($data["id_anggota"]); $i++) {
+        // Parse the date for each entry
+        $tanggal_pinjam = Carbon::parse($data['tanggalpinjam'][$i]);
         $tanggal_tenggat = $tanggal_pinjam->copy()->addDays(7);
 
-        // Menyimpan tanggal tenggat ke dalam data yang akan disimpan
-        $data['tenggat'] = $tanggal_tenggat;
+        // Prepare the data for each entry
+        $peminjamanData = [
+            'tanggalpinjam' => $data["tanggalpinjam"][$i],
+            'id_anggota' => $data["id_anggota"][$i],
+            'id_buku' => $data["id_buku"][$i],
+            'jumlah' => $data["jumlah"][$i],
+            'tenggat' => $tanggal_tenggat,
+        ];
 
-        Peminjaman::create($data);
-
-        return redirect()->route('peminjaman.index')->with('success', 'Data Telah ditambahkan');
+        // Menyimpan data peminjaman
+        Peminjaman::create($peminjamanData);
     }
+
+    return redirect()->route('peminjaman.index')->with('success', 'Data Telah ditambahkan');
+}
+
 
 
     public function show($id)

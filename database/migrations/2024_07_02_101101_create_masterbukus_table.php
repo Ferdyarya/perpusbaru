@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('cover');
             $table->string('judul');
             $table->string('author');
+            $table->string('sipnosis');
             $table->string('publisher');
             $table->string('isbn');
             $table->string('tahun');

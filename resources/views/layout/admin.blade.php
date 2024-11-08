@@ -167,6 +167,14 @@
                             <span class="hide-menu">Rusak atau Hilang</span>
                         </a>
                     </li>
+                  <li class="sidebar-item">
+                      <a class="sidebar-link" href="{{ route('rusak.index')}}" aria-expanded="false">
+                          <span>
+                              <i class="ti ti-file-broken"></i>
+                            </span>
+                            <span class="hide-menu">Pemusnahan Buku</span>
+                        </a>
+                    </li>
                     @endif
                   @if (Auth::user()->hakakses('kepalaperpus'))
                   <li class="sidebar-item">

@@ -152,9 +152,46 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="py-6 px-6 text-center">
-                <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a></p>
-            </div> --}}
+
+            <!-- Grafik Peminjaman Buku -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><b>Peminjaman Buku dalam 3 Tahun Terakhir</b></h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="bookLoansChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const ctx = document.getElementById('bookLoansChart').getContext('2d');
+                const bookLoansChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2021', '2022', '2023', '2024'], // Ganti dengan tahun yang sesuai
+                        datasets: [{
+                            label: 'Peminjaman Buku',
+                            data: [{{ $loans2021 }}, {{ $loans2022 }}, {{ $loans2023 }}, {{ $loans2024 }}], // Ganti dengan data aktual
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
         </div>
     </div>
 @endsection

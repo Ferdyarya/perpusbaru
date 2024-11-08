@@ -44,7 +44,13 @@
 
                                      <div class="form-group">
                                         <label for="author">Pengarang</label>
-                                        <input value="{{ $item->judul }}" type="text" name="author" class="form-control"
+                                        <input value="{{ $item->author }}" type="text" name="author" class="form-control"
+                                             placeholder="Masukan Pengarang" required>
+                                     </div>
+
+                                     <div class="form-group">
+                                        <label for="sipnosis">Sipnosis</label>
+                                        <input value="{{ $item->sipnosis }}" type="text" name="sipnosis" class="form-control"
                                              placeholder="Masukan Pengarang" required>
                                      </div>
 

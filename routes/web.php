@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterrakController;
 use App\Http\Controllers\MasterbukuController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PemusnahanController;
 use App\Http\Controllers\MasterebookController;
 use App\Http\Controllers\MasteranggotaController;
 use App\Http\Controllers\MasterkategoriController;
@@ -49,9 +50,16 @@ Route::get('/', function () {
     $peminjamanbaru = Peminjaman::whereDate('tanggalpinjam', today())->count();
     $pengembalianbaru = Peminjaman::whereDate('tglpengembalian', today())->count();
     $jatuhtempo = Peminjaman::whereDate('tenggat', today())->count();
+
+    // Menghitung peminjaman untuk 3 tahun terakhir
+    $loans2021 = Peminjaman::whereYear('tanggalpinjam', 2021)->count();
+    $loans2022 = Peminjaman::whereYear('tanggalpinjam', 2022)->count();
+    $loans2023 = Peminjaman::whereYear('tanggalpinjam', 2023)->count();
+    $loans2024 = Peminjaman::whereYear('tanggalpinjam', 2024)->count();
+
     return view('dashboard',compact(
         'jumlahbuku','jumlahanggota','stockbuku','kategori','rakbuku','rusakCount','hilangCount','pinjaman','dateNow','anggotabaru',
-        'peminjamanbaru','pengembalianbaru','jatuhtempo','reqoffbook','reqebook'));
+        'peminjamanbaru','pengembalianbaru','jatuhtempo','reqoffbook','reqebook', 'loans2021', 'loans2022', 'loans2023','loans2024'));
 })->middleware('auth');
 
 
@@ -72,6 +80,7 @@ Route::prefix('dashboard')->middleware(['auth:sanctum'])->group(function() {
     Route::resource('peminjaman', PeminjamanController::class);
     Route::resource('anggaran', AnggaranController::class);
     Route::resource('peminjamanebook', PeminjamanebookController::class);
+    Route::resource('pemusnahan', PemusnahanController::class);
 
     // Pengembalian
     Route::get('pengembalian', [PeminjamanController::class, 'pengembalian_index'])->name('pengembalian.index');

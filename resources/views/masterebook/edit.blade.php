@@ -42,6 +42,12 @@
                                      </div>
 
                                      <div class="form-group">
+                                        <label for="sipnosis">Sipnosis</label>
+                                        <input value="{{ $item->sipnosis }}" type="text" name="sipnosis" class="form-control"
+                                             placeholder="Masukan Sipnosis" required>
+                                     </div>
+
+                                     <div class="form-group">
                                         <label for="publisher">Penerbit</label>
                                         <input value="{{ $item->publisher }}" type="text" name="publisher" class="form-control"
                                              placeholder="Masukan Penerbit" required>

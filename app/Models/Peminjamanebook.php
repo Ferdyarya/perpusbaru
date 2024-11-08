@@ -9,7 +9,7 @@ class Peminjamanebook extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_anggota','id_ebook','tanggalpinjam'
+        'id_anggota','id_ebook','tanggalpinjam','sipnosis'
     ];
 
     public function masterebook()

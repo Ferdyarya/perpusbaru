@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('masterebooks', function (Blueprint $table) {
+        Schema::create('pemusnahans', function (Blueprint $table) {
             $table->id();
-            $table->string('cover');
-            $table->string('judul');
-            $table->string('author');
-            $table->string('sipnosis');
-            $table->string('publisher');
-            $table->string('isbn');
-            $table->string('tahun');
-            $table->string('filebuku');
+            $table->string('id_bukurusak');
+            $table->string('kondisi');
+            $table->string('qty');
+            $table->string('tanggal');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('masterebooks');
+        Schema::dropIfExists('pemusnahans');
     }
 };
