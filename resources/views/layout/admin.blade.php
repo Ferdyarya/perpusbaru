@@ -101,6 +101,24 @@
                     </a>
                   </li>
                   @endif
+                  @if (Auth::user()->hakakses('siswa'))
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('masterbuku.index')}}" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-file-description"></i>
+                      </span>
+                      <span class="hide-menu">Katalog Buku Offline</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('masterebook.index')}}" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-file-description"></i>
+                      </span>
+                      <span class="hide-menu">Katalog Buku Online</span>
+                    </a>
+                  </li>
+                  @endif
                   <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Data Table</span>
@@ -137,7 +155,7 @@
                         </a>
                     </li>
 
-                    @if (Auth::user()->hakakses('kepalaperpus') || Auth::user()->hakakses('petugas') || Auth::user()->hakakses('siswa'))
+                    @if (Auth::user()->hakakses('siswa'))
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('reqbuku.index') }}" aria-expanded="false">
                                 <span>

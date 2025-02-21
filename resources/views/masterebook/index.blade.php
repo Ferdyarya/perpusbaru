@@ -35,13 +35,51 @@
                             <input type="text" id="search" name="search" class="form-control" placeholder="Search">
                         </form>
                     </div>
+
                     {{-- Button Export PDF --}}
                     <div class="col-auto">
+                        @if (Auth::user()->hakakses('petugas'))
                         <a href="{{ route('masterebook.create')}}" class="btn btn-success">
                             Tambah Data
                         </a>
+                        @endif
+
+                        @php
+                        $user = Auth::user();
+                        $anggota = \App\Models\Masteranggota::where('id_anggota', $user->id)->first();
+                        @endphp
+
+                        @if ($anggota && $anggota->status === 'verifikasi')
+                        <a href="{{ route('peminjamanebook.index') }}" class="btn btn-info">
+                            Pinjam Buku
+                        </a>
+                        @else
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#alertModal">
+                            Pinjam Buku
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="alertModalLabel">Peringatan!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Daftar sebagai anggota dulu agar bisa melakukan peminjaman buku.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        <a href="{{ route('masteranggota.index') }}" class="btn btn-primary">Daftar Sekarang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
+
                 <div>
                     <table class="table table-hover">
                         <thead>

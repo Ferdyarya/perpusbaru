@@ -52,7 +52,6 @@ class PeminjamanController extends Controller
 {
     $data = $request->all();
 
-    // Loop through each item to process dates and save them
     for ($i = 0; $i < count($data["id_anggota"]); $i++) {
         // Parse the date for each entry
         $tanggal_pinjam = Carbon::parse($data['tanggalpinjam'][$i]);
@@ -447,6 +446,7 @@ class PeminjamanController extends Controller
     // Return the generated PDF as a download
     return $pdf->download('laporan_pernama.pdf');
 }
+
 
 }
 

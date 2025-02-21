@@ -96,13 +96,6 @@ class PeminjamanebookController extends Controller
         return view('laporanperpus.laporanebook', ['laporanebook' => $laporanpeminjamanebook]);
     }
 
-    // public function peminjamanebookpdf() {
-    //     $data = laporanpeminjamanebook::all();
-
-    //     $pdf = PDF::loadview('peminjaman.peminjamanpdf', ['peminjaman' => $data]);
-    //     return $pdf->download('laporan_peminjaman.pdf');
-    // }
-
     public function filterdateebook(Request $request)
     {
         $startDate = $request->input('dari');
