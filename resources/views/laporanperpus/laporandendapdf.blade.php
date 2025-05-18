@@ -90,6 +90,7 @@
             <tr>
                 <th class="px-6 py-2">No</th>
                 <th class="px-6 py-2">Nama Peminjam</th>
+                <th class="px-6 py-2">Tanggal Peminjam</th>
                 <th class="px-6 py-2">Judul Buku</th>
                 <th class="px-6 py-2">Status Pengembalian</th>
                 <th class="px-6 py-2">Status</th>
@@ -104,6 +105,7 @@
                 <tr>
                     <td class="px-6 py-6">{{ $loop->iteration }}</td>
                     <td class="px-6 py-2"><b>{{ $item->user->name }}</b></td>
+                    <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggalpinjam)->format('d M Y') }}</td>
                     <td class="px-6 py-2"><b>
                             {{ $item->masterbuku->judul }},{{ $item->masterbuku->tahun }}
                             <p class="text-body mt-2">

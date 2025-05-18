@@ -186,7 +186,7 @@
                         </a>
                     </li>
                   <li class="sidebar-item">
-                      <a class="sidebar-link" href="{{ route('rusak.index')}}" aria-expanded="false">
+                      <a class="sidebar-link" href="{{ route('pemusnahan.index')}}" aria-expanded="false">
                           <span>
                               <i class="ti ti-file-broken"></i>
                             </span>

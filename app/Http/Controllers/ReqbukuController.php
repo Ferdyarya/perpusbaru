@@ -96,14 +96,14 @@ class ReqbukuController extends Controller
     }
 
     // Laporan Buku reqbuku Filter
-    public function cetakbarangpertanggal()
+    public function cetakreqbukupertanggal()
     {
         $reqbuku = Reqbuku::Paginate(10);
 
         return view('laporanperpus.laporanreqbuku', ['laporanreqbuku' => $reqbuku]);
     }
 
-    public function filterdatebarang(Request $request)
+    public function filterdatereqbuku(Request $request)
     {
         $startDate = $request->input('dari');
         $endDate = $request->input('sampai');

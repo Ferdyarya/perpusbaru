@@ -44,16 +44,16 @@
                             <select name="filter" id="filter" class="form-control">
                                 <option value="">FILTER</option>
                                 <option value="all" {{ $filter === 'all' ? 'selected' : '' }}>SHOW ALL</option>
-                                @if ($masteranggota->isEmpty())
+                                @if ($kelasList->isEmpty())
                                     <option value="" disabled>Data Tidak Tersedia</option>
                                 @else
-                                    @foreach ($masteranggota->unique('kelas') as $item)
-                                        <option value="{{ $item->kelas }}"
-                                            {{ $item->kelas == $filter ? 'selected' : '' }}>
+                                    @foreach ($kelasList as $item)
+                                        <option value="{{ $item->kelas }}" {{ $item->kelas == $filter ? 'selected' : '' }}>
                                             {{ strtoupper($item->kelas) }}
                                         </option>
                                     @endforeach
                                 @endif
+
                             </select>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($masteranggota as $item)
+                        @foreach ($laporananggota as $item)
                             <tr>
                                 <td class="px-6 py-2">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-2">{{ $item->user->name }}</td>
@@ -97,7 +97,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $masteranggota->links() }} --}}
+                {{-- {{ $laporananggota->links() }} --}}
             </div>
 
                 </div>

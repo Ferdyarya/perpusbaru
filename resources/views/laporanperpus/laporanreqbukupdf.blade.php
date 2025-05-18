@@ -104,7 +104,7 @@
             @foreach ($laporanreqbuku as $item)
                 <tr>
                     <td class="px-6 py-6">{{ $loop->iteration }}</td>
-                    <td class="px-6 py-2">{{ $item->tanggal }}</td>
+                    <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                     <td class="px-6 py-2"><b>
                             {{ $item->judulbuku }},{{ $item->tahun }}
                             <p class="text-body mt-2">

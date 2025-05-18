@@ -35,9 +35,18 @@
                                     </div> --}}
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Masukan Cover</label>
-                                        <input {{-- value="{{ old('fotoktp') }}" --}} type="file" name="cover" class="form-control"
+                                        <input type="file" name="cover" class="form-control"
                                             placeholder="Masukan Cover">
                                     </div>
+
+                                    <div class="form-group">
+                                          <label for="tanggal">Tanggal</label>
+                                          <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal"
+                                              aria-describedby="emailHelp" placeholder="Masukan tanggal" value="{{ old('tanggal') }}" required>
+                                          @error('tanggal')
+                                              <div class="invalid-feedback">{{ $message }}</div>
+                                          @enderror
+                                      </div>
 
                                     <div class="form-group">
                                         <label for="judul">Judul</label>

@@ -33,7 +33,7 @@
                       <div class="col-8">
                           <div class="card" style="border-radius: 10px;">
                               <div class="card-body">
-                                  <form method="POST" action="{{ route('rusak.store') }}" enctype="multipart/form-data">
+                                  <form method="POST" action="{{ route('pemusnahan.store') }}" enctype="multipart/form-data">
                                       @csrf
                                       <div class="form-group" style="border-radius: 8px;">
                                         <label for="id_bukurusak">Buku</label>

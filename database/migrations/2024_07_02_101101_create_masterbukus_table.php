@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('masterbukus', function (Blueprint $table) {
             $table->id();
             $table->string('cover');
+            $table->string('tanggal');
             $table->string('judul');
             $table->string('author');
             $table->string('sipnosis');

@@ -78,9 +78,9 @@
                                 {{-- @php
                               $no=1;
                               @endphp --}}
-                                @foreach ($laporanebook as $index => $item)
+                                @foreach ($laporanpeminjamanebook as $index => $item)
                                     <tr>
-                                        <th class="px-6 py-2">{{ $index + $laporanebook->firstItem() }}</th>
+                                        <th class="px-6 py-2">{{ $index + $laporanpeminjamanebook->firstItem() }}</th>
                                         <td class="px-6 py-2">
                                             <b>{{ $item->user->name }}</b>
                                             {{-- <p class="text-body mt-2">Nomor: {{ $item->masteranggota->no_telp }}</p> --}}
@@ -89,12 +89,12 @@
                                             <b>{{ $item->masterebook->judul }}, {{ $item->masterebook->tahun }}</b>
                                             <p class="text-body mt-2">Author: {{ $item->masterebook->author }}</p>
                                         </td>
-                                        <td class="px-6 py-6">{{ $item->tanggalpinjam }}</td>
+                                        <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggalpinjam)->format('d M Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $laporanebook->links() }}
+                        {{ $laporanpeminjamanebook->links() }}
                     </div>
                 </div>
             </div>

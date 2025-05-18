@@ -93,7 +93,7 @@ class PeminjamanebookController extends Controller
     {
         $laporanpeminjamanebook = Peminjamanebook::Paginate(10);
 
-        return view('laporanperpus.laporanebook', ['laporanebook' => $laporanpeminjamanebook]);
+        return view('laporanperpus.laporanebook', ['laporanpeminjamanebook' => $laporanpeminjamanebook]);
     }
 
     public function filterdateebook(Request $request)

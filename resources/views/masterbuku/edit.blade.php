@@ -37,6 +37,11 @@
                                     </div> --}}
 
                                     <div class="form-group">
+                                        <label for="tanggal">Tanggal</label>
+                                        <input value="{{ old('tanggal', $item->tanggal) }}" type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Masukan Tanggal" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
                                         <label for="judul">Judul</label>
                                         <input value="{{ $item->judul }}" type="text" name="judul" class="form-control"
                                              placeholder="Masukan judul" required>

@@ -34,7 +34,7 @@
                       <div class="col-8">
                           <div class="card" style="border-radius: 10px;">
                               <div class="card-body">
-                                <form method="POST" action="{{ route('rusak.update', $item->id) }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('pemusnahan.update', $item->id) }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 

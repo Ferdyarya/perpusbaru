@@ -108,7 +108,7 @@
                 </td>
                   <td class="px-6 py-2">{{ $item->kerusakan }}</td>
                   <td class="px-6 py-2">{{ $item->qty }}</td>
-                  <td class="px-6 py-2">{{ $item->tanggal }}</td>
+                  <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
             </tr>
             @endforeach
         </tbody>

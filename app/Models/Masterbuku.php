@@ -9,7 +9,7 @@ class Masterbuku extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'cover', 'judul', 'author','publisher','isbn','tahun','stockbuku','id_rak','id_kategori','sipnosis'
+        'cover', 'judul', 'author','publisher','isbn','tahun','stockbuku','id_rak','id_kategori','sipnosis','tanggal'
     ];
 
     public function masterrak()

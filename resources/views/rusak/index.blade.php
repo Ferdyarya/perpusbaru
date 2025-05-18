@@ -83,7 +83,7 @@
                                 </td>
                                   <td class="px-6 py-2">{{ $item->kerusakan }}</td>
                                   <td class="px-6 py-2">{{ $item->qty }}</td>
-                                  <td class="px-6 py-2">{{ $item->tanggal }}</td>
+                                  <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                                   <td>
                                       <a href="{{ route('rusak.edit', $item->id)}}" class="btn btn-primary">
                                           Edit

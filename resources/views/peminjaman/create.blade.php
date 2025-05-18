@@ -30,7 +30,7 @@
 
                                         <div class="form-group mb-3">
                                             <label for="id_buku">Judul Buku</label>
-                                            <select class="form-select" name="id_buku" id="judulbuku" style="border-radius: 8px;">
+                                            <select class="form-select" name="id_buku[]" id="judulbuku" style="border-radius: 8px;">
                                                 <option></option>
                                                 @foreach ($masterbuku as $item)
                                                     <option value="{{ $item->id }}">{{ $item->judul }}</option>
@@ -41,12 +41,12 @@
                                         <div class="form-group mb-3">
                                             <label for="id_anggota">Nama Anggota</label>
                                             <input type="text" class="form-control" id="id_anggota" value="{{ Auth::user()->name }}" readonly>
-                                            <input type="hidden" value="{{ Auth::user()->id }}" name="id_anggota">
+                                            <input type="hidden" value="{{ Auth::user()->id }}" name="id_anggota[]">
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label for="tanggalpinjam">Tanggal Peminjaman</label>
-                                            <input type="date" name="tanggalpinjam" class="form-control @error('tanggalpinjam') is-invalid @enderror" id="tanggalpinjam" style="border-radius: 8px;" value="{{ old('tanggalpinjam') }}" min="{{ \Carbon\Carbon::now()->toDateString() }}" max="2100-12-31" required>
+                                            <input type="date" name="tanggalpinjam[]" class="form-control @error('tanggalpinjam') is-invalid @enderror" id="tanggalpinjam" style="border-radius: 8px;" value="{{ old('tanggalpinjam') }}" min="{{ \Carbon\Carbon::now()->toDateString() }}" max="2100-12-31" required>
                                             @error('tanggalpinjam')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -54,7 +54,7 @@
 
                                         <div class="form-group mb-3">
                                             <label for="jumlah">Qty</label>
-                                            <input type="number" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" style="border-radius: 8px;" value="{{ old('jumlah') }}" required>
+                                            <input type="number" name="jumlah[]" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" style="border-radius: 8px;" value="{{ old('jumlah') }}" required>
                                             @error('jumlah')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -65,7 +65,7 @@
                                         <div class="container">
                                             <div class="row justify-content-end mb-4">
                                                 <div class="col-auto">
-                                                    <button type="button" name="name" id="addrow" class="btn btn-primary">
+                                                    <button type="button" name="name" id="addrosw" class="btn btn-primary">
                                                         Add More
                                                     </button>
                                                 </div>

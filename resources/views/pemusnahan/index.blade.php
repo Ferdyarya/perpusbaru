@@ -41,17 +41,17 @@
                   {{-- search --}}
                   <div class="row g-3 align-items-center mb-4">
                       <div class="col-auto">
-                          <form action="rusak" method="GET">
+                          <form action="pemusnahan" method="GET">
                               <input type="text" id="search" name="search" class="form-control" placeholder="Search">
                           </form>
                       </div>
 
                       {{-- Button Export PDF --}}
                       <div class="col-auto">
-                          <a href="{{ route('rusak.create')}}" class="btn btn-success">
+                          <a href="{{ route('pemusnahan.create')}}" class="btn btn-success">
                               Tambah Data
                           </a>
-                          {{-- <a href="{{ route('rusakpdf')}}" class="btn btn-danger">
+                          {{-- <a href="{{ route('pemusnahanpdf')}}" class="btn btn-danger">
                               Export PDF
                           </a> --}}
                       </div>
@@ -62,7 +62,7 @@
                           <thead>
                               <tr>
                                   <th class="px-6 py-2">No</th>
-                                  <th class="px-6 py-2">Buku< Dimusnahkan</th>
+                                  <th class="px-6 py-2">Buku Dimusnahkan</th>
                                   <th class="px-6 py-2">Kondisi</th>
                                   <th class="px-6 py-2">qty</th>
                                   <th class="px-6 py-2">Tanggal</th>
@@ -73,20 +73,20 @@
                               @php
                               $no=1;
                               @endphp
-                              @foreach ($rusak as $index => $item)
+                              @foreach ($pemusnahan as $index => $item)
                               <tr>
-                                  <th class="px-6 py-2">{{ $index + $rusak->firstItem() }}</th>
+                                  <th class="px-6 py-2">{{ $index + $pemusnahan->firstItem() }}</th>
                                   <td class="px-6 py-2"><b>
-                                    {{ $item->rusak->judul }}
+                                    {{ $item->pemusnahan->judul }}
                                 </td>
                                   <td class="px-6 py-2">{{ $item->kondisi }}</td>
                                   <td class="px-6 py-2">{{ $item->qty }}</td>
-                                  <td class="px-6 py-2">{{ $item->tanggal }}</td>
+                                  <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                                   <td>
-                                      <a href="{{ route('rusak.edit', $item->id)}}" class="btn btn-primary">
+                                      <a href="{{ route('pemusnahan.edit', $item->id)}}" class="btn btn-primary">
                                           Edit
                                       </a>
-                                      <form action="{{ route('rusak.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                      <form action="{{ route('pemusnahan.destroy', $item->id) }}" method="POST" style="display:inline;">
                                           @csrf
                                           @method('delete')
                                           <button type="submit" class="btn btn-danger">Hapus</button>
@@ -96,7 +96,7 @@
                               @endforeach
                           </tbody>
                       </table>
-                      {{ $rusak->links() }}
+                      {{ $pemusnahan->links() }}
                   </div>
               </div>
           </div>

@@ -82,14 +82,14 @@ class RusakController extends Controller
     }
 
     // Laporan Buku Rusak Filter
-    public function cetakbarangpertanggal()
+    public function cetakrusakpertanggal()
     {
         $rusak = Rusak::Paginate(10);
 
         return view('laporanperpus.laporanrusak', ['laporanrusak' => $rusak]);
     }
 
-    public function filterdatebarang(Request $request)
+    public function filterdaterusak(Request $request)
     {
         $startDate = $request->input('dari');
         $endDate = $request->input('sampai');
@@ -101,6 +101,9 @@ class RusakController extends Controller
                                         ->whereDate('tanggal','<=',$endDate)
                                         ->paginate(10);
         }
+
+
+
         session(['filter_start_date' => $startDate]);
         session(['filter_end_date' => $endDate]);
 

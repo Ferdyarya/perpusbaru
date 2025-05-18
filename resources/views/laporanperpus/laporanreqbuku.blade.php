@@ -82,7 +82,7 @@
                               @foreach ($laporanreqbuku as $index => $item)
                               <tr>
                                   <th class="px-6 py-2">{{ $index + $laporanreqbuku->firstItem() }}</th>
-                                  <td class="px-6 py-2">{{ $item->tanggal }}</td>
+                                  <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                                   <td class="px-6 py-2"><b>
                                       {{ $item->judulbuku }},{{ $item->tahun }}
                                       <p class="text-body mt-2"></b>Author: {{ $item->author }}</p>

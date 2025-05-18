@@ -17,7 +17,7 @@ class MasteranggotaController extends Controller
 
         // Filter pencarian
         if ($request->has('search')) {
-            $query->where('judul', 'LIKE', '%' . $request->search . '%');
+            $query->where('kelas', 'LIKE', '%' . $request->search . '%');
         }
         // Role-based filtering
         if (Auth::user()->roles == 'siswa') {
@@ -116,32 +116,32 @@ class MasteranggotaController extends Controller
     // Report Pernama
     public function perkelas(Request $request)
 {
-    // Ambil filter dari request, defaultnya adalah null
-    $filter = $request->query('filter', null);
+    $filter = $request->query('filter', 'all');
 
-    // Ambil data peminjaman berdasarkan filter
-    if ($filter === 'all' || empty($filter)) {
-        $laporananggota = Masteranggota::paginate(10);
-    } else {
-        $laporananggota = Masteranggota::where('kelas', $filter)->paginate(10);
+    $query = Masteranggota::query();
+
+    if ($filter !== 'all' && !empty($filter)) {
+        $query->where('kelas', $filter);
     }
 
-    // Ambil data agregat
+    $laporananggota = $query->paginate(10);
+
     $idAnggotaCounts = Masteranggota::select('kelas', DB::raw('count(*) as count'))
         ->groupBy('kelas')
         ->orderBy('kelas')
         ->get();
 
-    // Ambil data master anggota
-    $masteranggota = MasterAnggota::all();
+    $kelasList = Masteranggota::select('kelas')->distinct()->orderBy('kelas')->get();
 
     return view('laporanperpus.laporananggota', [
         'laporananggota' => $laporananggota,
         'idAnggotaCounts' => $idAnggotaCounts,
         'filter' => $filter,
-        'masteranggota' => $masteranggota,
+        'kelasList' => $kelasList,
     ]);
 }
+
+
 
     // Fungsi untuk mencetak PDF
     public function cetakPerkelasPdf(Request $request)

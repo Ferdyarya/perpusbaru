@@ -119,18 +119,17 @@ Route::get('/perkelaspdf', [MasteranggotaController::class, 'cetakPerkelasPdf'])
 
 // Recap Laporan Tampilan
 Route::get('laporanperpus/laporandenda', [PeminjamanController::class, 'cetakpertanggaldenda'])->name('laporandenda');
-Route::get('laporanperpus/laporanreqbuku', [ReqbukuController::class, 'cetakbarangpertanggal'])->name('laporanreqbuku');
-Route::get('laporanperpus/laporanrusak', [RusakController::class, 'cetakbarangpertanggal'])->name('laporanrusak');
-Route::get('laporanperpus/laporanpeminjaman', [PeminjamanController::class, 'cetakbarangpertanggal'])->name('laporanpeminjaman');
+Route::get('laporanperpus/laporanreqbuku', [ReqbukuController::class, 'cetakreqbukupertanggal'])->name('laporanreqbuku');
+Route::get('laporanperpus/laporanrusak', [RusakController::class, 'cetakrusakpertanggal'])->name('laporanrusak');
+Route::get('laporanperpus/laporanpeminjaman', [PeminjamanController::class, 'cetakpeminjamanpertanggal'])->name('laporanpeminjaman');
 Route::get('laporanperpus/laporanpeminjaman', [PeminjamanController::class, 'cetakpertanggalpengembalian'])->name('laporanpeminjaman');
 Route::get('laporanperpus/laporanpengadaanbuku', [MasterbukuController::class, 'cetakbukupertanggal'])->name('laporanpengadaanbuku');
 
 // Filtering
-
 Route::get('laporandenda', [PeminjamanController::class, 'filterdatedenda'])->name('laporandenda');
-Route::get('laporanrusak', [RusakController::class, 'filterdatebarang'])->name('laporanrusak');
-Route::get('laporanreqbuku', [ReqbukuController::class, 'filterdatebarang'])->name('laporanreqbuku');
-Route::get('laporanpeminjaman', [PeminjamanController::class, 'filterdatebarang'])->name('laporanpeminjaman');
+Route::get('laporanrusak', [RusakController::class, 'filterdaterusak'])->name('laporanrusakontol');
+Route::get('laporanreqbuku', [ReqbukuController::class, 'filterdatereqbuku'])->name('laporanreqbuku');
+Route::get('laporanpeminjaman', [PeminjamanController::class, 'filterdatepeminjaman'])->name('laporanpeminjaman');
 Route::get('laporanpeminjamanebook', [PeminjamanebookController::class, 'filterdateebook'])->name('laporanpeminjamanebook');
 Route::get('laporanpengembalian', [PeminjamanController::class, 'filterdatepengembalian'])->name('laporanpengembalian');
 Route::get('laporanpengadaanbuku', [MasterbukuController::class, 'filterdatebuku'])->name('laporanpengadaanbuku');
@@ -148,7 +147,6 @@ Route::get('laporanpeminjamanebookpdf', [PeminjamanebookController::class, 'lapo
 
 
 // Filter Laporan
-
 Route::get('laporandendapdf/filter={filter}', [PeminjamanController::class, 'laporandendapdf'])->name('laporandendapdf');
 Route::get('laporanrusakpdf/filter={filter}', [RusakController::class, 'laporanrusakpdf'])->name('laporanrusakpdf');
 Route::get('laporanreqbukupdf/filter={filter}', [ReqbukuController::class, 'laporanreqbukupdf'])->name('laporanreqbukupdf');

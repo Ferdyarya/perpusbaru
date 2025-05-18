@@ -70,6 +70,7 @@
                                 <tr>
                                     <th class="px-6 py-2">No</th>
                                     <th class="px-6 py-2">Nama Peminjam</th>
+                                    <th class="px-6 py-2">Tanggal Pinjam</th>
                                     <th class="px-6 py-2">Judul Buku</th>
                                     <th class="px-6 py-2">Status</th>
                                     <th class="px-6 py-2">Dibayar</th>
@@ -83,6 +84,7 @@
                                     <tr>
                                         <th class="px-6 py-2">{{ $index + $laporandenda->firstItem() }}</th>
                                         <td class="px-6 py-2"><b>{{ $item->user->name }}</b></td>
+                                        <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggalpinjam)->format('d M Y') }}</td>
                                             <td class="px-6 py-2"><b>
                                                 {{ $item->masterbuku->judul }},{{ $item->masterbuku->tahun }}
                                                 <p class="text-body mt-2"></b>Author: {{ $item->masterbuku->author }}</p>

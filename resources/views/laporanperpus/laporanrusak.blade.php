@@ -38,7 +38,7 @@
 
 
               <div class="container">
-                <form action="{{ route('laporanrusak')}}" method="GET" class="row">
+                <form action="{{ route('laporanrusakontol') }}" method="GET" class="row">
                     <div class="col-md-3">
                         <label for="dari">Start Date:</label>
                         <input type="date" id="dari" name="dari" class="form-control">
@@ -68,10 +68,10 @@
                           <thead>
                               <tr>
                                   <th class="px-6 py-2">No</th>
+                                  <th class="px-6 py-2">Tanggal</th>
                                   <th class="px-6 py-2">Nama Buku</th>
                                   <th class="px-6 py-2">Keterangan</th>
                                   <th class="px-6 py-2">qty</th>
-                                  <th class="px-6 py-2">Tanggal</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -81,13 +81,13 @@
                               @foreach ($laporanrusak as $index => $item)
                               <tr>
                                   <th class="px-6 py-2">{{ $index + $laporanrusak->firstItem() }}</th>
+                                  <td class="px-6 py-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                                   <td class="px-6 py-2"><b>
                                     {{ $item->masterbuku->judul }},{{ $item->masterbuku->tahun }}
                                     <p class="text-body mt-2"></b>Author: {{ $item->masterbuku->author }}</p>
                                 </td>
                                   <td class="px-6 py-2">{{ $item->kerusakan }}</td>
                                   <td class="px-6 py-2">{{ $item->qty }}</td>
-                                  <td class="px-6 py-2">{{ $item->tanggal }}</td>
                                   {{-- <td>
                                       <a href="{{ route('rusak.edit', $item->id)}}" class="btn btn-primary">
                                           Edit

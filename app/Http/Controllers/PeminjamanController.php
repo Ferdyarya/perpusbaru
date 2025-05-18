@@ -53,11 +53,9 @@ class PeminjamanController extends Controller
     $data = $request->all();
 
     for ($i = 0; $i < count($data["id_anggota"]); $i++) {
-        // Parse the date for each entry
         $tanggal_pinjam = Carbon::parse($data['tanggalpinjam'][$i]);
         $tanggal_tenggat = $tanggal_pinjam->copy()->addDays(7);
 
-        // Prepare the data for each entry
         $peminjamanData = [
             'tanggalpinjam' => $data["tanggalpinjam"][$i],
             'id_anggota' => $data["id_anggota"][$i],
@@ -138,14 +136,14 @@ class PeminjamanController extends Controller
     }
 
      // Laporan Buku Peminjaman Filter
-     public function cetakbarangpertanggal()
+     public function cetakpeminjamanpertanggal()
      {
          $peminjaman = Peminjaman::Paginate(10);
 
          return view('laporanperpus.laporanpeminjaman', ['laporanpeminjaman' => $peminjaman]);
      }
 
-     public function filterdatebarang(Request $request)
+     public function filterdatepeminjaman(Request $request)
      {
          $startDate = $request->input('dari');
          $endDate = $request->input('sampai');
@@ -153,8 +151,8 @@ class PeminjamanController extends Controller
           if ($startDate == '' && $endDate == '') {
              $laporanpeminjaman = Peminjaman::paginate(10);
          } else {
-             $laporanpeminjaman = Peminjaman::whereDate('tanggal','>=',$startDate)
-                                         ->whereDate('tanggal','<=',$endDate)
+             $laporanpeminjaman = Peminjaman::whereDate('tanggalpinjam','>=',$startDate)
+                                         ->whereDate('tanggalpinjam','<=',$endDate)
                                          ->paginate(10);
          }
          session(['filter_start_date' => $startDate]);
@@ -312,8 +310,8 @@ class PeminjamanController extends Controller
          if ($startDate == '' && $endDate == '') {
             $laporanpengembalian = Peminjaman::paginate(10);
         } else {
-            $laporanpengembalian = Peminjaman::whereDate('tanggal','>=',$startDate)
-                                        ->whereDate('tanggal','<=',$endDate)
+            $laporanpengembalian = Peminjaman::whereDate('tglpengembalian','>=',$startDate)
+                                        ->whereDate('tglpengembalian','<=',$endDate)
                                         ->paginate(10);
         }
         session(['filter_start_date' => $startDate]);
@@ -331,8 +329,8 @@ class PeminjamanController extends Controller
         if ($startDate == '' && $endDate == '') {
             $laporanpengembalian = Peminjaman::all();
         } else {
-            $laporanpengembalian = Peminjaman::whereDate('tanggal', '>=', $startDate)
-                                            ->whereDate('tanggal', '<=', $endDate)
+            $laporanpengembalian = Peminjaman::whereDate('tglpengembalian', '>=', $startDate)
+                                            ->whereDate('tglpengembalian', '<=', $endDate)
                                             ->get();
         }
 
@@ -359,8 +357,8 @@ class PeminjamanController extends Controller
          if ($startDate == '' && $endDate == '') {
             $laporandenda = Peminjaman::paginate(10);
         } else {
-            $laporandenda = Peminjaman::whereDate('tanggal','>=',$startDate)
-                                        ->whereDate('tanggal','<=',$endDate)
+            $laporandenda = Peminjaman::whereDate('tanggalpinjam','>=',$startDate)
+                                        ->whereDate('tanggalpinjam','<=',$endDate)
                                         ->paginate(10);
         }
         session(['filter_start_date' => $startDate]);
@@ -378,8 +376,8 @@ class PeminjamanController extends Controller
         if ($startDate == '' && $endDate == '') {
             $laporandenda = Peminjaman::all();
         } else {
-            $laporandenda = Peminjaman::whereDate('tanggal', '>=', $startDate)
-                                            ->whereDate('tanggal', '<=', $endDate)
+            $laporandenda = Peminjaman::whereDate('tanggalpinjam', '>=', $startDate)
+                                            ->whereDate('tanggalpinjam', '<=', $endDate)
                                             ->get();
         }
 
